@@ -8,3 +8,13 @@ D:\_Work\BinaryEditor\obj\Debug\BinaryEditor.csproj.GenerateResource.cache
 D:\_Work\BinaryEditor\obj\Debug\BinaryEditor.csproj.CoreCompileInputs.cache
 D:\_Work\BinaryEditor\obj\Debug\BinaryEditor.exe
 D:\_Work\BinaryEditor\obj\Debug\BinaryEditor.pdb
+D:\_Work\Sharp_Projects\BinaryEditor\bin\Debug\BinaryEditor.exe.config
+D:\_Work\Sharp_Projects\BinaryEditor\bin\Debug\BinaryEditor.exe
+D:\_Work\Sharp_Projects\BinaryEditor\bin\Debug\BinaryEditor.pdb
+D:\_Work\Sharp_Projects\BinaryEditor\obj\Debug\BinaryEditor.csprojAssemblyReference.cache
+D:\_Work\Sharp_Projects\BinaryEditor\obj\Debug\BinaryEditor.Form1.resources
+D:\_Work\Sharp_Projects\BinaryEditor\obj\Debug\BinaryEditor.Properties.Resources.resources
+D:\_Work\Sharp_Projects\BinaryEditor\obj\Debug\BinaryEditor.csproj.GenerateResource.cache
+D:\_Work\Sharp_Projects\BinaryEditor\obj\Debug\BinaryEditor.csproj.CoreCompileInputs.cache
+D:\_Work\Sharp_Projects\BinaryEditor\obj\Debug\BinaryEditor.exe
+D:\_Work\Sharp_Projects\BinaryEditor\obj\Debug\BinaryEditor.pdb

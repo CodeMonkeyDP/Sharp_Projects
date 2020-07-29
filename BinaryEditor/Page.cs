@@ -111,13 +111,27 @@ namespace BinaryEditor
             outString = Encoding.Default.GetString(aBuffer, nCurrent, nBufferSize);
 
             // Записываем номер
-            sbMini.Append((br.BaseStream.Position - nRemain).ToString("D8"));
+            long lStrNumber = br.BaseStream.Position - nRemain;
+
+            string strNumber = Convert.ToString(lStrNumber, 16);
+
+            strNumber = strNumber.PadLeft(8, '0');
+
+            sbMini.Append(strNumber);
+
+            //sbMini.Append(Convert.ToString(lStrNumber, 16));
+
+
+
+            // sbMini.Append((br.BaseStream.Position - nRemain).ToString("D8"));
 
             // Добавляем разделитель
             sbMini.Append(" | ");
 
             // Добавляем байты
-            sbMini.Append(BitConverter.ToString(aBuffer, nCurrent, nBufferSize));
+            strNumber = BitConverter.ToString(aBuffer, nCurrent, nBufferSize);
+            strNumber = strNumber.Replace('-', ' ');
+            sbMini.Append(strNumber);
 
             // Добавляем разделитель
             sbMini.Append(" | ");
