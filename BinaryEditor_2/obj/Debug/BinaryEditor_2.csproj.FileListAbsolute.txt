@@ -1,0 +1,11 @@
+d:\_Work\Sharp_Projects\BinaryEditor_2\bin\Debug\BinaryEditor_2.exe.config
+d:\_Work\Sharp_Projects\BinaryEditor_2\bin\Debug\BinaryEditor_2.exe
+d:\_Work\Sharp_Projects\BinaryEditor_2\bin\Debug\BinaryEditor_2.pdb
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.csprojAssemblyReference.cache
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.Form1.resources
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.Properties.Resources.resources
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.csproj.GenerateResource.cache
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.csproj.CoreCompileInputs.cache
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.exe
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.pdb
+d:\_Work\Sharp_Projects\BinaryEditor_2\obj\Debug\BinaryEditor_2.MyHexBox.resources
