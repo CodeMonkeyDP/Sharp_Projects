@@ -31,6 +31,11 @@ namespace BinaryEditor_2
         // Для сложения строк
         StringBuilder sb = new StringBuilder(100000);
 
+        StringFormat style = new StringFormat
+        {
+            Alignment = StringAlignment.Near
+        };
+
         public MyHexBox() : base()
         {
             InitializeComponent();
@@ -218,11 +223,6 @@ namespace BinaryEditor_2
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-
-            StringFormat style = new StringFormat
-            {
-                Alignment = StringAlignment.Near
-            };
 
             e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), ClientRectangle, style);
         }
