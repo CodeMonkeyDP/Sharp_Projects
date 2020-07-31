@@ -15,13 +15,15 @@ namespace BinaryEditor_2
         private const int nStringLength = 16;
 
         // Количество строк в буфере
-        private const int nStringCount = 29;
+        private const int nStartStringCount = 29;
 
         // Базовый размер буфера
-        private const int nStartBufferLength = nStringLength * nStringCount;
+        private const int nStartBufferLength = nStringLength * nStartStringCount;
 
         // Буфер
         byte[] aBuffer = new byte[nStartBufferLength];
+
+        private int nStringCount = nStartStringCount;
 
         private FileInfo FileInfo;
 
@@ -57,6 +59,8 @@ namespace BinaryEditor_2
         {
             EndOldStream();
 
+            RecalculateBufferSize();
+
             FileInfo = new FileInfo(fileName);
 
             br = new BinaryReader(new BufferedStream(File.OpenRead(FileInfo.FullName), 1024 * 1024));
@@ -79,7 +83,7 @@ namespace BinaryEditor_2
 
         private void ReadNextPage()
         {
-            long nNewStreamPosition = br.BaseStream.Position + nStartBufferLength;
+            long nNewStreamPosition = br.BaseStream.Position + nStringLength * nStringCount;
 
             // Хватит ли стартового размера буфера для чтения информации
             if (nNewStreamPosition > FileInfo.Length)
@@ -97,8 +101,8 @@ namespace BinaryEditor_2
                 }
             }
             // Если размер буфера был изменён ранее
-            else if (aBuffer.Length != nStartBufferLength)
-                Array.Resize(ref aBuffer, nStartBufferLength);
+            else if (aBuffer.Length != nStringCount * nStringLength)
+                Array.Resize(ref aBuffer, nStringLength * nStringCount);
 
             // Считываем данные
             Text = ReadPage();
@@ -111,7 +115,7 @@ namespace BinaryEditor_2
         private void ReadPrevPage()
         {
             // Проверяем новую позицию потока чтения
-            long nNewStreamPosition = br.BaseStream.Position - (aBuffer.Length + nStartBufferLength);
+            long nNewStreamPosition = br.BaseStream.Position - (aBuffer.Length + nStringLength * nStringCount);
 
             // Если позиция отрицательная, выводим ошибку
             if (nNewStreamPosition < 0)
@@ -122,8 +126,8 @@ namespace BinaryEditor_2
             else
             {
                 // Если буфер имеет нестандартную длину, изменяем его размер
-                if (aBuffer.Length != nStartBufferLength)
-                    Array.Resize(ref aBuffer, nStartBufferLength);
+                if (aBuffer.Length != nStringLength * nStringCount)
+                    Array.Resize(ref aBuffer, nStringLength * nStringCount);
 
                 br.BaseStream.Position = nNewStreamPosition;
             }
@@ -278,6 +282,7 @@ namespace BinaryEditor_2
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "MyHexBox";
             this.Size = new System.Drawing.Size(352, 162);
+            this.Resize += new System.EventHandler(this.MyHexBox_Resize);
             this.ResumeLayout(false);
 
         }
@@ -287,6 +292,26 @@ namespace BinaryEditor_2
             double dPos = (double)e.NewValue / (double)vScrollBar1.Maximum;
             br.BaseStream.Position = (long)(dPos * FileInfo.Length);
             ReadNextPage();
+        }
+
+        private void MyHexBox_Resize(object sender, EventArgs e)
+        {
+            nStringCount = Size.Height / Font.Height;
+            if (br != null)
+                br.BaseStream.Position = br.BaseStream.Position - aBuffer.Length;
+            Array.Resize(ref aBuffer, nStringCount * nStringLength);
+
+            vScrollBar1.LargeChange = nStringCount;
+
+            if (br != null)
+                ReadNextPage();
+        }
+
+        private void RecalculateBufferSize()
+        {
+            nStringCount = Size.Height / Font.Height;
+            Array.Resize(ref aBuffer, nStringCount * nStringLength);
+            vScrollBar1.LargeChange = nStringCount;
         }
     }
 }
